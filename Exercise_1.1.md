@@ -98,9 +98,18 @@ Grafana в сочетании с Prometheus образуют двухсторо�
 * [датчи, в простонародье - спидометр;](https://grafana.com/static/img/docs/v66/gauge_panel_cover.png "Пример отображения панели Спидометр")
 * и множество других.
 
-----
+#### 5. Пример развертывания Grafana на Kubernetes
+   1. Создать файл конфигурации Grafana ``grafana.ini``
+   2. Заполнить его:
+      >[enterprise]
+      license_path = /etc/grafana/license/license.jwt
+     [server]
+     root_url =/your/license/root/url
+   3. Создать Configmap из ``grafana.ini``:
+      >kubectl create configmap ge-config --from-file=/path/to/your/grafana.ini
+   4. создать ``grafana.yaml`` и заполнить его данными со [страницы](https://grafana.com/docs/grafana/latest/setup-grafana/installation/kubernetes/) разработчика.
 
-#### 5. Некоторые примеры мониторинга Kubernetes
+#### 6. Некоторые примеры мониторинга Kubernetes
 
 Мониторинг кластеров (clusters), нод (nodes), под (podes) Kubernetes:
 ![Пример возможностей](https://grafana.com/media/solutions/kubernetes/kubernetes-monitoring-in-grafana-landing.png)
